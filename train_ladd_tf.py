@@ -5,6 +5,16 @@
   4. Late-fusion hybrid network        -> Keras Functional API, freshness index regression (0-100)
   5. Mahalanobis anomaly detection     -> 'Chemical Masking' anti-adulteration alerts
   +. TFLite post-training 8-bit quantization for ESP32-S3 deployment.
+
+Dataset: LADD — A Multimodal Image–Sensor Benchmark Dataset for Litchi Freshness
+and Formalin Adulteration Detection (3,000 images + per-sample sensor CSV).
+Download from Mendeley Data, V1: https://data.mendeley.com/datasets/6n9zbrp75r/1
+DOI: 10.17632/6n9zbrp75r.1 (file SHA-256 checksums are published on the dataset page).
+Expected layout after unzipping under DATA:
+    Litchi_Sensor_Data.csv
+    images/{Fresh,Rotten,Formalin}/<name> (<n>).jpg
+If citing: Tasnim, S.Z.; Awsaf, S.A.; Bijoy, M.H.I. (2025), Mendeley Data, V1,
+doi: 10.17632/6n9zbrp75r.1
 """
 import os
 import numpy as np
