@@ -1,0 +1,176 @@
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1795459044.879197   11633 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+I0000 00:00:1795459045.034976   11633 cpu_feature_guard.cc:227] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F AVX512_VNNI AVX512_BF16 AVX512_FP16 AVX_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1795459047.531772   11633 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+[1] ingestion: paired 2981/3000 CSV rows with images
+[split] train 2086  val 447  test 448
+[2] extracting visual Fv via MobileNetV2 (ImageNet) ...
+  loaded cached Fv
+Epoch 1/60
+17/17 - 1s - 59ms/step - loss: 686.2186 - mae: 19.2127 - val_loss: 161.7515 - val_mae: 8.4120
+Epoch 2/60
+17/17 - 0s - 7ms/step - loss: 183.2453 - mae: 9.1602 - val_loss: 78.2857 - val_mae: 5.7038
+Epoch 3/60
+17/17 - 0s - 7ms/step - loss: 91.5099 - mae: 6.7689 - val_loss: 56.9101 - val_mae: 4.7696
+Epoch 4/60
+17/17 - 0s - 7ms/step - loss: 74.2074 - mae: 6.0776 - val_loss: 44.2815 - val_mae: 4.3743
+Epoch 5/60
+17/17 - 0s - 8ms/step - loss: 58.6514 - mae: 5.6547 - val_loss: 34.4767 - val_mae: 4.2073
+Epoch 6/60
+17/17 - 0s - 7ms/step - loss: 48.0849 - mae: 5.2088 - val_loss: 29.5345 - val_mae: 4.0778
+Epoch 7/60
+17/17 - 0s - 8ms/step - loss: 40.0526 - mae: 4.8172 - val_loss: 26.5141 - val_mae: 3.9542
+Epoch 8/60
+17/17 - 0s - 8ms/step - loss: 39.9872 - mae: 4.7197 - val_loss: 22.9372 - val_mae: 3.7173
+Epoch 9/60
+17/17 - 0s - 7ms/step - loss: 34.9098 - mae: 4.5412 - val_loss: 24.0788 - val_mae: 3.8836
+Epoch 10/60
+17/17 - 0s - 7ms/step - loss: 33.1722 - mae: 4.4048 - val_loss: 25.7272 - val_mae: 3.8677
+Epoch 11/60
+17/17 - 0s - 7ms/step - loss: 31.1989 - mae: 4.3318 - val_loss: 22.3386 - val_mae: 3.7441
+Epoch 12/60
+17/17 - 0s - 7ms/step - loss: 30.5776 - mae: 4.3032 - val_loss: 20.8213 - val_mae: 3.6079
+Epoch 13/60
+17/17 - 0s - 7ms/step - loss: 30.0825 - mae: 4.2807 - val_loss: 21.3226 - val_mae: 3.7023
+Epoch 14/60
+17/17 - 0s - 7ms/step - loss: 27.2183 - mae: 4.0994 - val_loss: 19.4710 - val_mae: 3.4590
+Epoch 15/60
+17/17 - 0s - 7ms/step - loss: 28.0287 - mae: 4.1343 - val_loss: 18.9280 - val_mae: 3.4654
+Epoch 16/60
+17/17 - 0s - 7ms/step - loss: 26.6722 - mae: 4.0703 - val_loss: 19.1906 - val_mae: 3.4659
+Epoch 17/60
+17/17 - 0s - 7ms/step - loss: 24.8218 - mae: 3.8973 - val_loss: 19.4595 - val_mae: 3.5151
+Epoch 18/60
+17/17 - 0s - 8ms/step - loss: 25.2385 - mae: 3.8989 - val_loss: 18.5236 - val_mae: 3.4873
+Epoch 19/60
+17/17 - 0s - 8ms/step - loss: 23.4966 - mae: 3.7761 - val_loss: 17.8938 - val_mae: 3.3408
+Epoch 20/60
+17/17 - 0s - 7ms/step - loss: 22.9057 - mae: 3.7658 - val_loss: 17.6032 - val_mae: 3.3409
+Epoch 21/60
+17/17 - 0s - 7ms/step - loss: 23.0354 - mae: 3.7610 - val_loss: 17.5991 - val_mae: 3.3659
+Epoch 22/60
+17/17 - 0s - 7ms/step - loss: 22.3396 - mae: 3.7262 - val_loss: 17.3524 - val_mae: 3.3491
+Epoch 23/60
+17/17 - 0s - 7ms/step - loss: 24.1988 - mae: 3.8234 - val_loss: 18.9165 - val_mae: 3.4149
+Epoch 24/60
+17/17 - 0s - 7ms/step - loss: 22.1907 - mae: 3.7176 - val_loss: 18.3788 - val_mae: 3.3800
+Epoch 25/60
+17/17 - 0s - 7ms/step - loss: 22.3258 - mae: 3.6937 - val_loss: 18.0642 - val_mae: 3.3894
+Epoch 26/60
+17/17 - 0s - 7ms/step - loss: 21.9734 - mae: 3.7372 - val_loss: 18.2569 - val_mae: 3.3925
+Epoch 27/60
+17/17 - 0s - 7ms/step - loss: 22.4529 - mae: 3.7207 - val_loss: 18.4766 - val_mae: 3.3694
+Epoch 28/60
+17/17 - 0s - 7ms/step - loss: 21.1553 - mae: 3.5367 - val_loss: 18.0960 - val_mae: 3.3527
+Epoch 29/60
+17/17 - 0s - 7ms/step - loss: 19.9711 - mae: 3.5520 - val_loss: 17.1203 - val_mae: 3.2732
+Epoch 30/60
+17/17 - 0s - 7ms/step - loss: 21.8802 - mae: 3.6808 - val_loss: 18.1803 - val_mae: 3.4072
+Epoch 31/60
+17/17 - 0s - 7ms/step - loss: 20.4499 - mae: 3.5508 - val_loss: 17.8403 - val_mae: 3.3581
+Epoch 32/60
+17/17 - 0s - 7ms/step - loss: 19.0072 - mae: 3.4555 - val_loss: 18.0006 - val_mae: 3.3727
+Epoch 33/60
+17/17 - 0s - 7ms/step - loss: 18.4700 - mae: 3.3802 - val_loss: 17.4636 - val_mae: 3.3163
+Epoch 34/60
+17/17 - 0s - 7ms/step - loss: 20.1912 - mae: 3.5011 - val_loss: 17.5753 - val_mae: 3.3230
+Epoch 35/60
+17/17 - 0s - 7ms/step - loss: 18.1310 - mae: 3.3510 - val_loss: 17.7787 - val_mae: 3.3358
+Epoch 36/60
+17/17 - 0s - 8ms/step - loss: 19.3380 - mae: 3.4968 - val_loss: 17.5039 - val_mae: 3.3206
+Epoch 37/60
+17/17 - 0s - 7ms/step - loss: 17.9520 - mae: 3.2982 - val_loss: 17.8038 - val_mae: 3.2998
+Epoch 38/60
+17/17 - 0s - 7ms/step - loss: 18.4420 - mae: 3.3398 - val_loss: 17.3468 - val_mae: 3.2952
+Epoch 39/60
+17/17 - 0s - 7ms/step - loss: 17.2931 - mae: 3.2951 - val_loss: 18.1110 - val_mae: 3.3179
+Epoch 40/60
+17/17 - 0s - 7ms/step - loss: 17.7804 - mae: 3.2875 - val_loss: 16.6968 - val_mae: 3.2280
+Epoch 41/60
+17/17 - 0s - 7ms/step - loss: 17.5541 - mae: 3.3115 - val_loss: 17.1576 - val_mae: 3.2867
+Epoch 42/60
+17/17 - 0s - 9ms/step - loss: 17.6929 - mae: 3.3450 - val_loss: 18.2230 - val_mae: 3.3425
+Epoch 43/60
+17/17 - 0s - 7ms/step - loss: 17.3014 - mae: 3.2746 - val_loss: 17.9185 - val_mae: 3.3373
+Epoch 44/60
+17/17 - 0s - 7ms/step - loss: 15.6779 - mae: 3.1145 - val_loss: 18.3037 - val_mae: 3.3752
+Epoch 45/60
+17/17 - 0s - 7ms/step - loss: 16.6754 - mae: 3.2102 - val_loss: 16.5008 - val_mae: 3.2105
+Epoch 46/60
+17/17 - 0s - 14ms/step - loss: 16.6235 - mae: 3.2206 - val_loss: 18.3742 - val_mae: 3.3000
+Epoch 47/60
+17/17 - 0s - 7ms/step - loss: 16.4297 - mae: 3.2071 - val_loss: 17.2819 - val_mae: 3.2635
+Epoch 48/60
+17/17 - 0s - 7ms/step - loss: 16.3916 - mae: 3.1747 - val_loss: 18.5120 - val_mae: 3.3699
+Epoch 49/60
+17/17 - 0s - 7ms/step - loss: 16.1845 - mae: 3.1851 - val_loss: 18.5613 - val_mae: 3.3593
+Epoch 50/60
+17/17 - 0s - 7ms/step - loss: 15.9674 - mae: 3.1400 - val_loss: 17.9922 - val_mae: 3.2909
+Epoch 51/60
+17/17 - 0s - 7ms/step - loss: 16.3215 - mae: 3.1831 - val_loss: 18.3023 - val_mae: 3.2756
+Epoch 52/60
+17/17 - 0s - 7ms/step - loss: 15.3135 - mae: 3.0520 - val_loss: 18.4449 - val_mae: 3.3094
+Epoch 53/60
+17/17 - 0s - 6ms/step - loss: 15.6268 - mae: 3.0854 - val_loss: 19.2503 - val_mae: 3.4107
+Epoch 54/60
+17/17 - 0s - 6ms/step - loss: 14.9186 - mae: 3.0243 - val_loss: 18.2316 - val_mae: 3.3142
+Epoch 55/60
+17/17 - 0s - 6ms/step - loss: 14.3321 - mae: 2.9714 - val_loss: 18.8430 - val_mae: 3.4231
+Epoch 56/60
+17/17 - 0s - 7ms/step - loss: 14.1875 - mae: 2.9889 - val_loss: 18.1442 - val_mae: 3.2798
+Epoch 57/60
+17/17 - 0s - 7ms/step - loss: 14.9444 - mae: 3.0145 - val_loss: 18.5903 - val_mae: 3.3629
+Epoch 58/60
+17/17 - 0s - 7ms/step - loss: 15.5591 - mae: 3.0774 - val_loss: 18.4261 - val_mae: 3.3785
+Epoch 59/60
+17/17 - 0s - 7ms/step - loss: 14.0724 - mae: 2.9315 - val_loss: 19.9255 - val_mae: 3.4196
+Epoch 60/60
+17/17 - 0s - 7ms/step - loss: 13.9772 - mae: 2.9250 - val_loss: 19.1559 - val_mae: 3.3975
+
+[4] freshness index regression (test set)
+  Fresh          MAE=  2.10  predicted idx mean=  96.2  gt mean=  95.4
+  Rotten         MAE=  4.18  predicted idx mean=   9.6  gt mean=  10.0
+  Formalin-Mixed MAE=  4.21  predicted idx mean=  78.5  gt mean=  76.8
+  Overall MAE = 3.49 / 100
+  visual-score threshold 70: fresh correctly fresh 100.0%, rotten correctly degraded 100.0%
+
+[5] Mahalanobis anti-adulteration module (test set)
+  freshness-state Mahalanobis threshold (99% quantile of train Fresh): 19.52
+  Fresh          total=150  'Chemical Masking' alerts=0
+  Rotten         total=148  'Chemical Masking' alerts=0
+  Formalin-Mixed total=150  'Chemical Masking' alerts=144
+  -> formalin caught (recall): 96.0%, false alerts on fresh: 0
+
+[+] TFLite post-training 8-bit quantization ...
+Saved artifact at '/workspace/hybrid_sm'. The following endpoints are available:
+
+* Endpoint 'serve'
+  args_0 (POSITIONAL_ONLY): TensorSpec(shape=(None, 1287), dtype=tf.float32, name='joint_features')
+Output Type:
+  TensorSpec(shape=(None, 1), dtype=tf.float32, name=None)
+Captures:
+  140706219028368: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140706219028944: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140706219029904: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140706219030480: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140706219030864: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140706219029328: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140706219031248: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140706219031056: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140706219029712: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140706219031824: TensorSpec(shape=(), dtype=tf.resource, name=None)
+W0000 00:00:1795459059.490306   11633 tf_tfl_flatbuffer_helpers.cc:364] Ignored output_format.
+W0000 00:00:1795459059.490566   11633 tf_tfl_flatbuffer_helpers.cc:367] Ignored drop_control_dependency.
+I0000 00:00:1795459059.491301   11633 reader.cc:83] Reading SavedModel from: /workspace/hybrid_sm
+I0000 00:00:1795459059.492317   11633 reader.cc:52] Reading meta graph with tags { serve }
+I0000 00:00:1795459059.492398   11633 reader.cc:147] Reading SavedModel debug info (if present) from: /workspace/hybrid_sm
+I0000 00:00:1795459059.495877   11633 mlir_graph_optimization_pass.cc:437] MLIR V1 optimization pass is not enabled
+I0000 00:00:1795459059.496762   11633 loader.cc:236] Restoring SavedModel bundle.
+I0000 00:00:1795459059.525191   11633 loader.cc:220] Running initialization op on SavedModel bundle at path: /workspace/hybrid_sm
+I0000 00:00:1795459059.531905   11633 loader.cc:471] SavedModel load for tags { serve }; Status: success: OK. Took 40612 microseconds.
+I0000 00:00:1795459059.549224   11633 dump_mlir_util.cc:269] disabling MLIR crash reproducer, set env var `MLIR_CRASH_REPRODUCER_DIRECTORY` to enable.
+fully_quantize: 0, inference_type: 6, input_inference_type: INT8, output_inference_type: INT8
+W0000 00:00:1795459059.683987   11633 flatbuffer_export.cc:3851] Skipping runtime version metadata in the model. This will be generated by the exporter.
+  int8 flatbuffer written: 357.9 KB (Keras model 4141.9 KB)
