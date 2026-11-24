@@ -25,7 +25,26 @@ from tensorflow.keras import layers
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import confusion_matrix
 
-DATA = "/kaggle/input/ladd-dataset"  # <- set this to your uploaded Kaggle dataset slug
+DATA_CANDIDATES = [
+    "/kaggle/input/ladd-dataset",
+    "/kaggle/working/ladd",
+    os.path.expanduser("~/ladd"),
+    os.getcwd(),
+]
+
+
+def resolve_data():
+    for cand in DATA_CANDIDATES:
+        if os.path.exists(os.path.join(cand, "Litchi_Sensor_Data.csv")):
+            print(f"[0] dataset found at: {cand}")
+            return cand
+    raise FileNotFoundError(
+        "Litchi_Sensor_Data.csv not found in any of: " + ", ".join(DATA_CANDIDATES)
+        + ". Run the LADD_Kaggle.ipynb bootstrap cell first, or set DATA manually."
+    )
+
+
+DATA = resolve_data()
 IMG_DIRS = {"Fresh": "Fresh", "Rotten": "Rotten", "Formalin-Mixed": "Formalin"}
 CLASSES = ["Fresh", "Rotten", "Formalin-Mixed"]
 SENSORS = ["Moisture", "Firmness", "pH", "TSS", "Ethanol", "CO2", "Formaldehyde"]
