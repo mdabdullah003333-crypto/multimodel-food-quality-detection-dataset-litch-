@@ -35,16 +35,45 @@ DATA_CANDIDATES = [
 
 def resolve_data():
     for cand in DATA_CANDIDATES:
-        if os.path.exists(os.path.join(cand, "Litchi_Sensor_Data.csv")):
+        if os.path.isfile(os.path.join(cand, "Litchi_Sensor_Data.csv")):
             print(f"[0] dataset found at: {cand}")
             return cand
+    for cand in DATA_CANDIDATES:
+        if not os.path.isdir(cand):
+            continue
+        for root, _, files in os.walk(cand):
+            if "Litchi_Sensor_Data.csv" in files:
+                print(f"[0] dataset found at (nested): {root}")
+                return root
     raise FileNotFoundError(
         "Litchi_Sensor_Data.csv not found in any of: " + ", ".join(DATA_CANDIDATES)
-        + ". Run the LADD_Kaggle.ipynb bootstrap cell first, or set DATA manually."
+        + ". Add the CSV to your Kaggle dataset, or run the LADD_Kaggle.ipynb"
+        " bootstrap cell first, or set DATA manually."
     )
 
 
 DATA = resolve_data()
+IMG_BASE = None
+
+
+def resolve_img_base():
+    global IMG_BASE
+    if IMG_BASE is not None:
+        return IMG_BASE
+    class_dirs = list(IMG_DIRS.values())
+    for base in [os.path.join(DATA, "images"), DATA]:
+        if all(os.path.isdir(os.path.join(base, d)) for d in class_dirs):
+            IMG_BASE = base
+            return IMG_BASE
+    for root, dirs, _ in os.walk(DATA):
+        if all(d in dirs for d in class_dirs):
+            print(f"[0] image folders found at (nested): {root}")
+            IMG_BASE = root
+            return IMG_BASE
+    raise FileNotFoundError(
+        f"class image folders {class_dirs} not found under {DATA}/images - "
+        "check the dataset layout"
+    )
 IMG_DIRS = {"Fresh": "Fresh", "Rotten": "Rotten", "Formalin-Mixed": "Formalin"}
 CLASSES = ["Fresh", "Rotten", "Formalin-Mixed"]
 SENSORS = ["Moisture", "Firmness", "pH", "TSS", "Ethanol", "CO2", "Formaldehyde"]
@@ -59,9 +88,10 @@ FORMALIN_BAND = (70.0, 84.0)
 
 def load_manifest():
     df = pd.read_csv(os.path.join(DATA, "Litchi_Sensor_Data.csv"))
+    base = resolve_img_base()
     paths = []
     for _, row in df.iterrows():
-        d = os.path.join(DATA, "images", IMG_DIRS[row["Category"]])
+        d = os.path.join(base, IMG_DIRS[row["Category"]])
         cid = row["ImageID"]
         num = int(cid.split("(")[1].split(")")[0])
         cands = ([f"lithchi_fresh ({num + 1000}).jpg"] if row["Category"] == "Fresh"
