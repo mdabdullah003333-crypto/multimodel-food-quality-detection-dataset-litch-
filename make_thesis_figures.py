@@ -1,6 +1,8 @@
 """Generate 6 publication-grade thesis figures (300 DPI, PNG + PDF)."""
 import os
 import re
+import warnings
+warnings.filterwarnings("ignore", message="tf.lite.Interpreter is deprecated.*")
 import numpy as np
 import tensorflow as tf
 import matplotlib
@@ -146,11 +148,11 @@ def fig4_real(y, te, senm, md_fn, thr, scores_te):
     for d, name, alpha in [(d_f, "Fresh", 0.65), (d_fo, "Formalin-Mixed", 0.65), (d_r, "Rotten", 0.45)]:
         ax.hist(lg(d), bins=bins, alpha=alpha, color=COLORS[name], label=name, edgecolor="white")
     ax.axvline(np.log10(thr), color="black", lw=1.6, ls="--")
-    ax.annotate(f"anomaly threshold\n$D_{{mah}}$ = {thr:.2f} ($\log_{{10}}$ = {np.log10(thr):.2f})",
+    ax.annotate(f"anomaly threshold\n$D_{{mah}}$ = {thr:.2f} (log\u2081\u2080 = {np.log10(thr):.2f})",
                 xy=(np.log10(thr), ax.get_ylim()[1] * .75),
                 xytext=(np.log10(thr) + 0.8, ax.get_ylim()[1] * .75), fontsize=9,
                 arrowprops=dict(arrowstyle="->", lw=1.0))
-    ax.set_xlabel("$\log_{10}$ Mahalanobis distance to Fresh gas-state distribution")
+    ax.set_xlabel("log\u2081\u2080 Mahalanobis distance to Fresh gas-state distribution")
     ax.set_ylabel("Test samples")
     ax.set_title("Mahalanobis distance distribution, Fresh vs. Formalin-Mixed (test)")
     ax.legend(framealpha=.9); ax.grid(alpha=.3)

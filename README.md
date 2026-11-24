@@ -54,6 +54,23 @@ adulteration detection.
 | Model size | 4.24 MB → 0.37 MB int8 (91.6% ↓, output |diff| mean 0.17) |
 
 Full run log: `tf_train_log.txt`. Figures (300 DPI, PNG + PDF): `thesis_figures/`.
+`make_thesis_figures.py` is compile-clean under `-W error::SyntaxWarning` (fig4 labels use
+literal `log₁₀` text instead of LaTeX mathtext; the TFLite-Interpreter deprecation warning is
+filtered).
+
+### Cross-platform reproducibility (CPU sandbox + Kaggle GPU T4)
+
+The identical pipeline (seed 42) was re-run end-to-end on Kaggle with the manually uploaded
+LADD dataset. Metrics vary only slightly with GPU numerics, as expected;
+the int8 flatbuffer size is byte-identical across all runs.
+
+| Run | Platform | Overall MAE | Masking recall | Masking precision | False alerts | Mahalanobis threshold | Full-pipeline accuracy |
+|---|---|---|---|---|---|---|---|
+| Sandbox | CPU (TF 2.21) | 3.49 | 96.0% (144/150) | 100% | 0 | 19.52 | 98.9% |
+| Kaggle run A | GPU T4 | 3.40 | 96.7% (145/150) | 100% | 0 | 14.71 | 98.4% |
+| Kaggle run B | GPU T4 | 3.46 | 95.3% (143/150) | 100% | 0 | 20.21 | 98.4% |
+
+All runs: Fresh-vs-Rotten accuracy 100% at visual threshold 70; int8 flatbuffer 357.9 KB.
 
 ## Reproduce
 

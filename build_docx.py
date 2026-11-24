@@ -68,8 +68,8 @@ r.font.size = Pt(12)
 h("1. Objective and Scope", 1)
 p("This note documents the complete working session that transformed the published LADD dataset "
   "into a trained, evaluated, quantized, deployment-ready multimodal AI pipeline, produced six "
-  "publication-grade thesis figures, packaged all assets, and delivered the code and artifacts to "
-  "GitHub (draft PR #1, branch vibe/ladd-thesis-figures-3afbd1).")
+  "publication-grade thesis figures, cross-validated reproducibility on Kaggle GPU, and delivered "
+  "the code and artifacts to the GitHub repository (main branch; PR #1 merged).")
 bullet("Goal 1 — implement the project methodology (5 operational layers) in software on the LADD dataset.")
 bullet("Goal 2 — train and evaluate the multimodal (image + gas/thermal telemetry) model.")
 bullet("Goal 3 — quantize the model to an ESP32-S3–deployable int8 TFLite artifact.")
@@ -171,8 +171,24 @@ figure(f"{FIGS}/fig5_confusion_matrix.png", "Figure 4. Confusion matrix with raw
 h("7.4 Kalman Filtering Effect", 2)
 figure(f"{FIGS}/fig2_kalman_filtering.png", "Figure 5. Raw telemetry vs moving-average + adaptive-Kalman + baseline-tracked signals (Ethanol, CO2, Formaldehyde).")
 
+h("7.5 Cross-Platform Reproducibility Check (Kaggle GPU)", 2)
+p("The identical pipeline (seed 42) was re-run end-to-end on Kaggle (GPU T4) with the LADD dataset "
+  "uploaded manually as a private Kaggle dataset, confirming cross-platform reproducibility. "
+  "Metrics vary only slightly with GPU numerics; the int8 flatbuffer size is byte-identical (357.9 KB) "
+  "across all runs.")
+table([
+    ["Run", "Platform", "Overall MAE", "Masking recall", "Precision", "False alerts", "Threshold (D)", "Full-pipeline accuracy"],
+    ["Sandbox", "CPU (TF 2.21)", "3.49", "96.0% (144/150)", "100%", "0", "19.52", "98.9%"],
+    ["Kaggle run A", "GPU T4", "3.40", "96.7% (145/150)", "100%", "0", "14.71", "98.4%"],
+    ["Kaggle run B", "GPU T4", "3.46", "95.3% (143/150)", "100%", "0", "20.21", "98.4%"],
+])
+p("All runs: Fresh-vs-Rotten accuracy 100% at visual threshold 70; final Kaggle run reported "
+  "FULL-PIPELINE ACCURACY 441/448 = 98.4% with zero false Chemical-Masking alerts on Fresh or Rotten.")
+p("Note: figure generation now uses literal 'log10' (unicode subscript) axis labels instead of "
+  "LaTeX mathtext, removing the Python SyntaxWarning; the tf.lite.Interpreter deprecation "
+  "warning is filtered, so the full script runs warning-free.")
 # ---------- 8. Quantization ----------
-h("8. Quantization and Edge Deployment (TFLite, ESP32-S3)", 1)
+
 p("Post-training quantization (PTQ) with a 300-sample representative dataset, full integer int8 "
   "weights and activations, int8 input/output — ready for TensorFlow Lite Micro + ESP-NN on the ESP32-S3.")
 table([
@@ -193,7 +209,7 @@ table([
     ["tf_train_log.txt", "Complete training + evaluation log (reproduction evidence)"],
     ["thesis_figures/ (12 files)", "6 figures x (PNG + PDF) at 300 DPI"],
     ["thesis_assets.zip", "Bundle of code, log, model artifact and figures (sandbox)"],
-    ["GitHub draft PR #1", "https://github.com/mdabdullah003333-crypto/multimodel-food-quality-detection-dataset-litch-/pull/1 (branch vibe/ladd-thesis-figures-3afbd1)"],
+    ["GitHub repository (main)", "https://github.com/mdabdullah003333-crypto/multimodel-food-quality-detection-dataset-litch- (PR #1 merged; main carries the doc-upload state plus the warning-free figure fix and documentation update)"],
 ])
 
 # ---------- 10. Limitations ----------
@@ -206,8 +222,8 @@ numli("Earlier prototype numbers (PyTorch: image-only 99.78%, Mahalanobis 100%) 
 
 # ---------- 11. Next steps ----------
 h("11. Recommended Next Steps", 1)
-numli("Merge draft PR #1 after review; then optionally run the pipeline in Kaggle (T4 GPU) to cross-check reproducibility.")
-numli("Analyze the 6 missed Formalin samples (borderline CH2O) and consider ROC tuning of the masking thresholds instead of fixed rules.")
+numli("DONE - PR #1 merged into main and Kaggle (T4 GPU) cross-check completed: Overall MAE 3.40-3.46, masking recall 95.3-96.7%, zero false alerts, identical 357.9 KB int8 flatbuffer.")
+numli("Analyze the 5-7 missed Formalin samples (borderline CH2O) and consider ROC tuning of the masking thresholds instead of fixed rules.")
 numli("Add firmware-side ESP-IDF integration: int8 TFLite inference with ESP-NN, BLE telemetry to the Flutter app.")
 numli("Field protocol: collect a small out-of-distribution validation set (market conditions) to honestly measure degradation.")
 numli("Contact the LADD authors about the naming inconsistencies; a V2 would strengthen the benchmark.")
@@ -215,7 +231,7 @@ numli("Contact the LADD authors about the naming inconsistencies; a V2 would str
 # ---------- Footer ----------
 doc.add_paragraph()
 p("Prepared automatically during the working session; all numeric values are taken from the committed "
-  "training log and figure-generation script. Repository: "
+  "training log, the Kaggle run outputs, and the figure-generation script. Repository: "
   "github.com/mdabdullah003333-crypto/multimodel-food-quality-detection-dataset-litch-", italic=True, size=9)
 
 doc.save(OUT)
