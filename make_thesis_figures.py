@@ -98,9 +98,19 @@ def fig1():
     ax2.plot(ep, hist["val_mae"], color="#ef6c00", lw=1.4, ls="--", alpha=.85, label="Val MAE")
     ax2.set_ylabel("MAE (freshness index pts)")
     l1, la1 = ax1.get_legend_handles_labels(); l2, la2 = ax2.get_legend_handles_labels()
-    ax1.legend(l1 + l2, la1 + la2, loc="center right", framealpha=.9)
+    ax1.legend(l1 + l2, la1 + la2, loc="upper right", framealpha=.95,
+               edgecolor="#999999", fancybox=False)
+    best = int(np.argmin(hist["val_mae"]))
+    ax2.plot(ep[best], hist["val_mae"][best], "o", ms=6, color="#ef6c00",
+             mec="black", mew=.7, zorder=5)
+    ax2.annotate(f"best val MAE {hist['val_mae'][best]:.2f} (epoch {ep[best]})",
+                 xy=(ep[best], hist["val_mae"][best]),
+                 xytext=(ep[best] + 4, hist["val_mae"][best] + 2.2), fontsize=9,
+                 arrowprops=dict(arrowstyle="->", color="#555555", lw=.9))
     ax1.set_title("Hybrid model training dynamics (60 epochs)")
-    ax1.grid(alpha=.3)
+    ax1.grid(alpha=.3, ls=":")
+    ax1.set_ylim(0, max(hist["val_loss"]) * 1.08)
+    ax2.set_ylim(0, max(hist["mae"] + hist["val_mae"]) * 1.12)
     save(fig, "fig1_training_loss")
 
 
