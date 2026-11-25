@@ -1,0 +1,5 @@
+SENSOR-CONTRIBUTION ABLATION (test set, seed 42)
+variant        MAE   Fresh-vsRotten  FormalinRecall  3class  falseAlerts
+sensor-only     3.36   100.0%           96.7%        98.9%   0
+visual-only     3.59    99.7%            0.0%        66.3%   0
+fusion (ours)   3.88   100.0%           94.7%        98.2%   0
