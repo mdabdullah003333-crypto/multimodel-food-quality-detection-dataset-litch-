@@ -1,0 +1,7 @@
+INT8 QUANTIZED FULL-PIPELINE EVALUATION
+confusion matrix: [[150, 0, 0], [0, 148, 0], [3, 2, 145]]
+3-class accuracy: 443/448 = 98.9%
+Fresh-vs-Rotten: 100.0%
+masking recall 96.7%, precision 100.0%, false alerts 0
+int8 threshold 16.43, latency 0.01 ms/sample
+claim >95% quantized accuracy: PROVEN
